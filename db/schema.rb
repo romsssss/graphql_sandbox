@@ -22,4 +22,19 @@ ActiveRecord::Schema.define(version: 2019_03_08_134910) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "objectives", force: :cascade do |t|
+    t.string "title"
+    t.datetime "ended_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+# Could not dump table "steps" because of following StandardError
+#   Unknown type 'step_status' for column 'status'
+
+# Could not dump table "tasks" because of following StandardError
+#   Unknown type 'task_status' for column 'status'
+
+  add_foreign_key "steps", "objectives"
+  add_foreign_key "tasks", "steps"
 end
